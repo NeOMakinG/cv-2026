@@ -7,21 +7,10 @@ import { COLORS } from '../constants/config';
 
 export const JOURNEY_MILESTONES: JourneyMilestone[] = [
   {
-    id: 'origin',
-    title: 'Where It All Began',
-    location: 'Compiègne, France',
-    coordinates: { lat: 49.4178, lng: 2.8261 },
-    startDate: '1995',
-    endDate: null,
-    description: 'Born and raised in northern France. Started coding early, fell in love with the web. Built websites before responsive design was a thing.',
-    type: 'origin',
-    color: COLORS.MARKERS.origin,
-  },
-  {
     id: 'work-webexpr',
     title: 'Full-stack Developer',
-    location: 'Compiègne, France',
-    coordinates: { lat: 49.4178, lng: 2.8261 },
+    location: 'Paris, France',
+    coordinates: { lat: 48.8566, lng: 2.3522 },
     startDate: '2014',
     endDate: '2016',
     description: 'First professional role at WebexpR/Wholehelp. Integrated 100+ CMS templates, built ERP interfaces (EBP ↔ PrestaShop), set up Active Directory, and developed mobile apps with Ionic/Angular. Where I learned that real-world code is messy — and that\'s okay.',
@@ -150,12 +139,6 @@ export const STORY_SECTIONS: StorySection[] = [
     title: 'The Journey',
     subtitle: '10+ years of building for the web',
     milestoneIds: [],
-  },
-  {
-    id: 'origins',
-    title: 'Origins',
-    subtitle: 'Compiègne, France',
-    milestoneIds: ['origin'],
   },
   {
     id: 'beginnings',
