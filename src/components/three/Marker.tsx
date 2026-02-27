@@ -4,7 +4,7 @@
  */
 
 import { useRef, useState, useMemo } from 'react';
-import { useFrame } from '@react-three/fiber';
+import { useFrame, ThreeEvent } from '@react-three/fiber';
 import { Html } from '@react-three/drei';
 import * as THREE from 'three';
 import { MARKER_CONFIG, GLOBE_CONFIG } from '../../constants/config';
@@ -49,6 +49,7 @@ export const Marker: React.FC<MarkerProps> = ({
 }) => {
   const markerRef = useRef<THREE.Mesh>(null);
   const ringRef = useRef<THREE.Mesh>(null);
+  const ringMaterialRef = useRef<THREE.MeshBasicMaterial>(null);
   const [isHovered, setIsHovered] = useState(false);
 
   /**
@@ -86,13 +87,13 @@ export const Marker: React.FC<MarkerProps> = ({
    * Animation loop for pulse effect and hover scaling.
    */
   useFrame(({ clock }) => {
-    if (!markerRef.current || !ringRef.current) return;
+    if (!markerRef.current || !ringRef.current || !ringMaterialRef.current) return;
 
     // Pulse animation for active markers
     if (isActive) {
       const pulse = Math.sin(clock.elapsedTime * 3) * 0.2 + 1;
       ringRef.current.scale.setScalar(pulse * 2);
-      ringRef.current.material.opacity = 0.5 - (pulse - 1) * 0.5;
+      ringMaterialRef.current.opacity = 0.5 - (pulse - 1) * 0.5;
     }
 
     // Hover scale animation
@@ -118,7 +119,7 @@ export const Marker: React.FC<MarkerProps> = ({
     document.body.style.cursor = 'auto';
   };
 
-  const handleClick = (event: THREE.Event) => {
+  const handleClick = (event: ThreeEvent<MouseEvent>) => {
     event.stopPropagation();
     onClick?.(milestone);
   };
@@ -146,6 +147,7 @@ export const Marker: React.FC<MarkerProps> = ({
       <mesh ref={ringRef} visible={isActive}>
         <ringGeometry args={[MARKER_CONFIG.SIZE * 1.5, MARKER_CONFIG.SIZE * 2, 32]} />
         <meshBasicMaterial
+          ref={ringMaterialRef}
           color={color}
           transparent
           opacity={0.5}

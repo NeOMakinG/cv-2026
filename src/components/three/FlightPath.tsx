@@ -5,6 +5,7 @@
 
 import { useRef, useMemo } from 'react';
 import { useFrame } from '@react-three/fiber';
+import { Line } from '@react-three/drei';
 import * as THREE from 'three';
 import { GLOBE_CONFIG, COLORS } from '../../constants/config';
 import { latLngToVector3 } from '../../utils/coordinates';
@@ -48,7 +49,6 @@ export const FlightPath: React.FC<FlightPathProps> = ({
   animated = true,
   animationProgress,
 }) => {
-  const lineRef = useRef<THREE.Line>(null);
   const progressRef = useRef(0);
 
   /**
@@ -81,41 +81,32 @@ export const FlightPath: React.FC<FlightPathProps> = ({
   }, [curve]);
 
   /**
-   * Create geometry from points.
+   * Get visible points based on animation progress.
    */
-  const geometry = useMemo(() => {
-    const geo = new THREE.BufferGeometry().setFromPoints(points);
-    return geo;
-  }, [points]);
+  const visiblePoints = useMemo(() => {
+    const targetProgress = animationProgress ?? progressRef.current;
+    const count = Math.floor(targetProgress * points.length);
+    return points.slice(0, Math.max(count, 2));
+  }, [points, animationProgress]);
 
   /**
    * Animation loop for drawing the path.
    */
   useFrame((_, delta) => {
-    if (!lineRef.current || !animated) return;
+    if (!animated || animationProgress !== undefined) return;
 
-    // Use external progress or animate internally
-    const targetProgress = animationProgress ?? 1;
-    progressRef.current = THREE.MathUtils.lerp(
-      progressRef.current,
-      targetProgress,
-      delta * 2
-    );
-
-    // Update draw range to create drawing animation
-    const drawCount = Math.floor(progressRef.current * points.length);
-    lineRef.current.geometry.setDrawRange(0, drawCount);
+    // Animate internally if no external progress
+    progressRef.current = THREE.MathUtils.lerp(progressRef.current, 1, delta * 2);
   });
 
   return (
-    <line ref={lineRef} geometry={geometry}>
-      <lineBasicMaterial
-        color={color}
-        transparent
-        opacity={0.6}
-        linewidth={2}
-      />
-    </line>
+    <Line
+      points={visiblePoints}
+      color={color}
+      lineWidth={2}
+      transparent
+      opacity={0.6}
+    />
   );
 };
 

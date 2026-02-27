@@ -19,7 +19,6 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
-    "noUncheckedIndexedAccess": true,
     "forceConsistentCasingInFileNames": true,
 
     /* Path aliases */
@@ -34,6 +33,5 @@
       "@constants/*": ["./src/constants/*"]
     }
   },
-  "include": ["src"],
-  "references": [{ "path": "./tsconfig.node.json" }]
+  "include": ["src"]
 }

@@ -3,7 +3,7 @@
  * Sets up the React Three Fiber canvas with all necessary providers.
  */
 
-import { Suspense, useCallback, useState } from 'react';
+import { Suspense, useCallback } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { Preload } from '@react-three/drei';
 import { Scene } from './three';

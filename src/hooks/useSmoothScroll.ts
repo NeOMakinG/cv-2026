@@ -79,7 +79,7 @@ export const useSmoothScroll = (
     lenisRef.current = lenis;
 
     // Scroll event handler
-    const onScroll = ({ scroll, limit, progress }: { 
+    const onScroll = ({ scroll, progress }: { 
       scroll: number; 
       limit: number; 
       progress: number;

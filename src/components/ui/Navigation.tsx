@@ -3,7 +3,6 @@
  * Provides buttons and progress indicator for navigating the timeline.
  */
 
-import type { JourneyMilestone } from '../../types';
 import { JOURNEY_MILESTONES } from '../../data/journey';
 import './Navigation.css';
 
