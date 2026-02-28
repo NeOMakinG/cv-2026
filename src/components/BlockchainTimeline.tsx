@@ -14,6 +14,7 @@ export const BlockchainTimeline = () => {
   const [selectedChain, setSelectedChain] = useState<ChainExperience | null>(null);
   const sectionRefs = useRef<HTMLElement[]>([]);
   const paginationRef = useRef<HTMLElement>(null);
+  const headerRef = useRef<HTMLElement>(null);
   const activeIndexRef = useRef(0);
 
   const totalSections = reversedBlocks.length + 2;
@@ -28,6 +29,26 @@ export const BlockchainTimeline = () => {
     activeIndexRef.current = newIndex;
   }, []);
 
+  // Pause hero chain logo animations when header scrolls offscreen
+  useEffect(() => {
+    const el = headerRef.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          el.classList.remove('header-offscreen');
+        } else {
+          el.classList.add('header-offscreen');
+        }
+      },
+      { threshold: 0 }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -38,7 +59,7 @@ export const BlockchainTimeline = () => {
           }
         }
       },
-      { threshold: 0.3 }
+      { rootMargin: '-45% 0px -45% 0px', threshold: 0 }
     );
 
     sectionRefs.current.forEach((el) => {
@@ -95,7 +116,7 @@ export const BlockchainTimeline = () => {
       <header
         className="timeline-header"
         data-section-index={0}
-        ref={el => { if (el) sectionRefs.current[0] = el; }}
+        ref={el => { if (el) { sectionRefs.current[0] = el; headerRef.current = el; } }}
       >
         {CHAIN_DECORATIONS.map((deco) => {
           const chain = getChainById(deco.chainId);

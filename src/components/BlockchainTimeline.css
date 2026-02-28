@@ -184,7 +184,6 @@
   animation: chain-drift var(--deco-duration, 30s) ease-in-out infinite;
   --deco-rotation: 0deg;
   transition: opacity 0.4s ease, transform 0.3s ease;
-  will-change: transform;
 }
 
 .chain-logo-decoration:hover {
@@ -219,6 +218,10 @@
   75% {
     transform: rotate(calc(var(--deco-rotation) + 4deg)) translateY(6px);
   }
+}
+
+.timeline-header.header-offscreen .chain-logo-decoration {
+  animation-play-state: paused;
 }
 
 .chain-container {
@@ -264,7 +267,7 @@
   background: transparent;
   cursor: pointer;
   padding: 0;
-  transition: all 0.3s ease;
+  transition: transform 0.3s ease, background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .pagination-label {

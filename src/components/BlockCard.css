@@ -24,11 +24,11 @@
   filter: brightness(0) invert(1);
   transition: opacity 0.4s ease;
   --base-rotation: 0deg;
-  will-change: transform, opacity;
 }
 
 .block-bg-svg-1 {
   animation: svg-drift-1 20s ease-in-out infinite;
+  animation-play-state: paused;
 }
 
 .block-bg-svg-2 {
@@ -36,6 +36,12 @@
   height: calc(100% + 50px);
   animation: svg-drift-2 25s ease-in-out infinite;
   animation-delay: -12s;
+  animation-play-state: paused;
+}
+
+.block-card.active .block-bg-svg-1,
+.block-card.active .block-bg-svg-2 {
+  animation-play-state: running;
 }
 
 @keyframes svg-drift-1 {

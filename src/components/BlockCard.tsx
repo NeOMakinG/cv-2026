@@ -1,4 +1,4 @@
-import { useRef, useEffect, useState } from 'react';
+import { useRef, useEffect, useState, useCallback } from 'react';
 import { gsap } from 'gsap';
 import type { Block } from '../types/blockchain';
 import './BlockCard.css';
@@ -25,20 +25,31 @@ export const BlockCard = ({ block, displayIndex }: BlockCardProps) => {
   const cardRef = useRef<HTMLDivElement>(null);
   const hashRef = useRef<HTMLSpanElement>(null);
   const hasAnimated = useRef(false);
+  const isVisibleRef = useRef(false);
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const [displayHash, setDisplayHash] = useState(block.hash);
 
-  useEffect(() => {
-    if (!block.confirmed && hashRef.current) {
-      const interval = setInterval(() => {
-        const chars = '0123456789abcdef';
-        const newHash = '0x' + Array.from({ length: 64 }, () => 
-          chars[Math.floor(Math.random() * chars.length)]
-        ).join('');
-        setDisplayHash(newHash);
-      }, 250);
-      return () => clearInterval(interval);
-    }
+  const startHashInterval = useCallback(() => {
+    if (intervalRef.current || block.confirmed) return;
+    intervalRef.current = setInterval(() => {
+      const chars = '0123456789abcdef';
+      const newHash = '0x' + Array.from({ length: 64 }, () => 
+        chars[Math.floor(Math.random() * chars.length)]
+      ).join('');
+      setDisplayHash(newHash);
+    }, 250);
   }, [block.confirmed]);
+
+  const stopHashInterval = useCallback(() => {
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current);
+      intervalRef.current = null;
+    }
+  }, []);
+
+  useEffect(() => {
+    return () => stopHashInterval();
+  }, [stopHashInterval]);
 
   useEffect(() => {
     const el = cardRef.current;
@@ -46,8 +57,10 @@ export const BlockCard = ({ block, displayIndex }: BlockCardProps) => {
 
     const observer = new IntersectionObserver(
       ([entry]) => {
+        isVisibleRef.current = entry.isIntersecting;
         if (entry.isIntersecting) {
           el.classList.add('active');
+          if (!block.confirmed) startHashInterval();
           if (!hasAnimated.current) {
             hasAnimated.current = true;
             const svgs = el.querySelectorAll('.block-bg-svg');
@@ -60,6 +73,7 @@ export const BlockCard = ({ block, displayIndex }: BlockCardProps) => {
           }
         } else {
           el.classList.remove('active');
+          stopHashInterval();
         }
       },
       { threshold: 0.3 }
@@ -67,7 +81,7 @@ export const BlockCard = ({ block, displayIndex }: BlockCardProps) => {
 
     observer.observe(el);
     return () => observer.disconnect();
-  }, []);
+  }, [block.confirmed, startHashInterval, stopHashInterval]);
 
   const [r1, r2] = ROTATION_PAIRS[displayIndex % ROTATION_PAIRS.length];
 
