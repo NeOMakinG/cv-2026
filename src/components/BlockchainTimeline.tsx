@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect, useMemo } from 'react';
+import { useState, useRef, useEffect, useMemo, useCallback } from 'react';
 import { FaGithub, FaXTwitter } from 'react-icons/fa6';
 import { HiOutlineMail, HiOutlineDocumentDownload } from 'react-icons/hi';
 import { BlockCard } from './BlockCard';
@@ -11,31 +11,32 @@ import './BlockchainTimeline.css';
 
 export const BlockchainTimeline = () => {
   const reversedBlocks = useMemo(() => [...BLOCKS].reverse(), []);
-
-  const [activeBlock, setActiveBlock] = useState(0);
-  const [minedBlocks, setMinedBlocks] = useState<number[]>([0]);
   const [selectedChain, setSelectedChain] = useState<ChainExperience | null>(null);
   const sectionRefs = useRef<HTMLElement[]>([]);
+  const paginationRef = useRef<HTMLElement>(null);
+  const activeIndexRef = useRef(0);
 
   const totalSections = reversedBlocks.length + 2;
+
+  const updatePaginationDots = useCallback((newIndex: number) => {
+    if (!paginationRef.current || activeIndexRef.current === newIndex) return;
+    const dots = paginationRef.current.children;
+    const prev = dots[activeIndexRef.current] as HTMLElement | undefined;
+    const next = dots[newIndex] as HTMLElement | undefined;
+    if (prev) prev.classList.remove('dot-active');
+    if (next) next.classList.add('dot-active');
+    activeIndexRef.current = newIndex;
+  }, []);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
-        entries.forEach((entry) => {
+        for (const entry of entries) {
           if (entry.isIntersecting) {
             const index = Number(entry.target.getAttribute('data-section-index'));
-            if (!isNaN(index)) {
-              setActiveBlock(index);
-              if (index > 0 && index <= reversedBlocks.length) {
-                const blockIndex = index - 1;
-                setMinedBlocks(prev =>
-                  prev.includes(blockIndex) ? prev : [...prev, blockIndex]
-                );
-              }
-            }
+            if (!isNaN(index)) updatePaginationDots(index);
           }
-        });
+        }
       },
       { threshold: 0.3 }
     );
@@ -45,7 +46,7 @@ export const BlockchainTimeline = () => {
     });
 
     return () => observer.disconnect();
-  }, [reversedBlocks.length]);
+  }, [reversedBlocks.length, updatePaginationDots]);
 
   const scrollToSection = (index: number) => {
     const el = sectionRefs.current[index];
@@ -54,14 +55,17 @@ export const BlockchainTimeline = () => {
 
   return (
     <div className="blockchain-timeline">
-      {/* Left-side pagination */}
-      <nav className="block-pagination" aria-label="Block navigation">
+      <nav
+        className="block-pagination"
+        aria-label="Block navigation"
+        ref={paginationRef}
+      >
         {Array.from({ length: totalSections }, (_, i) => {
           let dotClass = 'pagination-dot';
           let label = '';
 
           if (i === 0) {
-            dotClass += ' dot-header';
+            dotClass += ' dot-header dot-active';
             label = '0xm4king';
           } else if (i === totalSections - 1) {
             dotClass += ' dot-footer';
@@ -72,9 +76,6 @@ export const BlockchainTimeline = () => {
               dotClass += block.confirmed ? ' dot-confirmed' : ' dot-mining';
               label = block.company;
             }
-          }
-          if (activeBlock === i) {
-            dotClass += ' dot-active';
           }
 
           return (
@@ -170,8 +171,6 @@ export const BlockchainTimeline = () => {
             <div className="block-wrapper">
               <BlockCard
                 block={block}
-                isActive={activeBlock === index + 1}
-                onActivate={() => setActiveBlock(index + 1)}
                 displayIndex={index}
               />
             </div>

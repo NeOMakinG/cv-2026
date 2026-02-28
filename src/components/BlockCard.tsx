@@ -5,8 +5,6 @@ import './BlockCard.css';
 
 interface BlockCardProps {
   block: Block;
-  isActive: boolean;
-  onActivate: () => void;
   displayIndex: number;
 }
 
@@ -23,9 +21,10 @@ const TYPE_LABELS: Record<Block['type'], string> = {
   current: 'MINING...',
 };
 
-export const BlockCard = ({ block, isActive, onActivate, displayIndex }: BlockCardProps) => {
+export const BlockCard = ({ block, displayIndex }: BlockCardProps) => {
   const cardRef = useRef<HTMLDivElement>(null);
   const hashRef = useRef<HTMLSpanElement>(null);
+  const hasAnimated = useRef(false);
   const [displayHash, setDisplayHash] = useState(block.hash);
 
   useEffect(() => {
@@ -42,23 +41,40 @@ export const BlockCard = ({ block, isActive, onActivate, displayIndex }: BlockCa
   }, [block.confirmed]);
 
   useEffect(() => {
-    if (isActive && cardRef.current) {
-      const svgs = cardRef.current.querySelectorAll('.block-bg-svg');
-      svgs.forEach((svg) => {
-        gsap.fromTo(svg,
-          { opacity: 0, scale: 0.92 },
-          { opacity: 0.4, scale: 1, duration: 1.2, ease: 'power2.out' }
-        );
-      });
-    }
-  }, [isActive]);
+    const el = cardRef.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          el.classList.add('active');
+          if (!hasAnimated.current) {
+            hasAnimated.current = true;
+            const svgs = el.querySelectorAll('.block-bg-svg');
+            svgs.forEach((svg) => {
+              gsap.fromTo(svg,
+                { opacity: 0, scale: 0.92 },
+                { opacity: 0.4, scale: 1, duration: 1.2, ease: 'power2.out' }
+              );
+            });
+          }
+        } else {
+          el.classList.remove('active');
+        }
+      },
+      { threshold: 0.3 }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
 
   const [r1, r2] = ROTATION_PAIRS[displayIndex % ROTATION_PAIRS.length];
 
   return (
     <div 
       ref={cardRef}
-      className={`block-card ${isActive ? 'active' : ''} ${!block.confirmed ? 'mining' : ''}`}
+      className={`block-card ${!block.confirmed ? 'mining' : ''}`}
     >
       <img
         src="/block-1.svg"
