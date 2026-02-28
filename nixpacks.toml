@@ -1,5 +1,5 @@
 [phases.setup]
-nixPkgs = ["nodejs_20"]
+nixPkgs = ["nodejs_22"]
 
 [phases.install]
 cmds = [
@@ -12,4 +12,4 @@ cmds = [
 cmds = ["yarn build"]
 
 [start]
-cmd = "yarn preview"
+cmd = "npx serve -s dist -l tcp://0.0.0.0:8080"
