@@ -184,6 +184,9 @@ export const BlockchainTimeline = () => {
             <a href="mailto:contact@0xm4king.com">
               contact@0xm4king.com
             </a>
+            <a href="/cv" className="footer-cv-link">
+              Download CV
+            </a>
           </div>
         </div>
       </footer>
