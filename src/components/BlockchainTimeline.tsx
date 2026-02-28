@@ -172,7 +172,7 @@ export const BlockchainTimeline = () => {
       >
         <div className="footer-content">
           <p className="footer-hash">
-            Chain validated &bull; {BLOCKS.filter(b => b.confirmed).length} blocks confirmed
+            Chain validated &bull; {BLOCKS.length} blocks confirmed
           </p>
           <div className="footer-links">
             <a href="https://github.com/neomaking" target="_blank" rel="noopener noreferrer">
