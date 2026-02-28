@@ -19,6 +19,7 @@ export interface Block {
   previousHash: string;
   nonce: number;
   confirmed: boolean;
+  link?: string;
 }
 
 export interface Transaction {

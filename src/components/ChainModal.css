@@ -1,0 +1,208 @@
+.chain-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.chain-modal {
+  position: relative;
+  max-width: 520px;
+  width: 100%;
+  max-height: 85vh;
+  overflow-y: auto;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 36px;
+  color: #fff;
+}
+
+.chain-modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 1.6rem;
+  cursor: pointer;
+  line-height: 1;
+  padding: 4px 8px;
+  transition: color 0.2s;
+}
+
+.chain-modal-close:hover {
+  color: #fff;
+}
+
+.chain-modal-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.chain-modal-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: rgba(255, 255, 255, 0.06);
+  flex-shrink: 0;
+}
+
+.chain-modal-name {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.chain-modal-category {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  color: rgba(74, 222, 128, 0.7);
+  margin-top: 2px;
+  display: inline-block;
+}
+
+.chain-modal-tagline {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.5);
+  margin: 0 0 16px 0;
+  line-height: 1.5;
+}
+
+.chain-modal-description {
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.75);
+  line-height: 1.65;
+  margin: 0 0 24px 0;
+}
+
+.chain-modal-section {
+  margin-bottom: 20px;
+}
+
+.chain-modal-section-title {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  color: rgba(255, 255, 255, 0.3);
+  margin: 0 0 10px 0;
+}
+
+.chain-modal-highlights {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.chain-modal-highlights li {
+  font-size: 0.88rem;
+  color: rgba(255, 255, 255, 0.65);
+  padding-left: 16px;
+  position: relative;
+  line-height: 1.5;
+}
+
+.chain-modal-highlights li::before {
+  content: '>';
+  position: absolute;
+  left: 0;
+  color: rgba(74, 222, 128, 0.5);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8rem;
+}
+
+.chain-modal-protocols {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.chain-modal-protocol-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  padding: 4px 10px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  color: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.chain-modal-pr-link {
+  display: inline-block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8rem;
+  color: rgba(96, 165, 250, 0.8);
+  text-decoration: none;
+  padding: 10px 16px;
+  border: 1px solid rgba(96, 165, 250, 0.2);
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  margin-top: 4px;
+}
+
+.chain-modal-pr-link:hover {
+  color: #60a5fa;
+  background: rgba(96, 165, 250, 0.08);
+  border-color: rgba(96, 165, 250, 0.4);
+}
+
+@media (max-width: 640px) {
+  .chain-modal-overlay {
+    align-items: flex-end;
+    padding: 0;
+  }
+
+  .chain-modal {
+    padding: 20px;
+    border-radius: 16px 16px 0 0;
+    max-height: calc(100dvh - 32px);
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .chain-modal-name {
+    font-size: 1.2rem;
+  }
+
+  .chain-modal-icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .chain-modal-tagline {
+    font-size: 0.8rem;
+  }
+
+  .chain-modal-description {
+    font-size: 0.88rem;
+  }
+
+  .chain-modal-highlights li {
+    font-size: 0.82rem;
+  }
+
+  .chain-modal-protocol-tag {
+    font-size: 0.65rem;
+    padding: 3px 8px;
+  }
+
+  .chain-modal-pr-link {
+    display: block;
+    text-align: center;
+    font-size: 0.75rem;
+  }
+}
