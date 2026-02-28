@@ -2,12 +2,10 @@
   position: relative;
   width: 100%;
   max-width: 500px;
-  background: rgba(255, 255, 255, 0.03);
+  background: rgba(8, 8, 8, 0.92);
   border-radius: 4px;
   padding: 24px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  backdrop-filter: blur(10px);
+  transition: box-shadow 0.3s ease;
   overflow: visible;
   box-shadow: 0 20px 50px -20px rgba(0, 0, 0, 0.5);
 }
@@ -26,6 +24,7 @@
   filter: brightness(0) invert(1);
   transition: opacity 0.4s ease;
   --base-rotation: 0deg;
+  will-change: transform, opacity;
 }
 
 .block-bg-svg-1 {
@@ -55,11 +54,6 @@
 
 .block-card.active .block-bg-svg {
   opacity: 0.6;
-}
-
-.block-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 30px 60px -30px rgba(0, 0, 0, 0.6);
 }
 
 .block-card.active {
@@ -223,13 +217,6 @@
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 4px;
   color: rgba(255, 255, 255, 0.6);
-  transition: all 0.2s ease;
-}
-
-.transaction:hover {
-  background: rgba(255, 255, 255, 0.15);
-  border-color: rgba(255, 255, 255, 0.3);
-  color: #fff;
 }
 
 .block-footer {

@@ -137,6 +137,20 @@ export const BlockchainTimeline = () => {
               <span className="stat-label">YEARS</span>
             </div>
           </div>
+          <div className="header-links">
+            <a href="https://github.com/neomaking" target="_blank" rel="noopener noreferrer">
+              <FaGithub /> GitHub
+            </a>
+            <a href="https://x.com/0xm4king" target="_blank" rel="noopener noreferrer">
+              <FaXTwitter /> X
+            </a>
+            <a href="mailto:contact@0xm4king.com">
+              <HiOutlineMail /> contact@0xm4king.com
+            </a>
+            <a href="/cv" className="header-cv-link">
+              <HiOutlineDocumentDownload /> Download CV
+            </a>
+          </div>
         </div>
         <div className="scroll-indicator">
           <span>Scroll to mine</span>

@@ -36,7 +36,7 @@ export const BlockCard = ({ block, isActive, onActivate, displayIndex }: BlockCa
           chars[Math.floor(Math.random() * chars.length)]
         ).join('');
         setDisplayHash(newHash);
-      }, 100);
+      }, 250);
       return () => clearInterval(interval);
     }
   }, [block.confirmed]);
@@ -59,7 +59,6 @@ export const BlockCard = ({ block, isActive, onActivate, displayIndex }: BlockCa
     <div 
       ref={cardRef}
       className={`block-card ${isActive ? 'active' : ''} ${!block.confirmed ? 'mining' : ''}`}
-      onClick={onActivate}
     >
       <img
         src="/block-1.svg"

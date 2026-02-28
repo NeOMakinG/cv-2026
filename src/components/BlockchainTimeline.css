@@ -111,6 +111,45 @@
   letter-spacing: 0.15em;
 }
 
+.header-links {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 32px;
+}
+
+.header-links a {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.4);
+  text-decoration: none;
+  padding: 6px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 6px;
+  transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.header-links a:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.header-cv-link {
+  color: rgba(74, 222, 128, 0.6) !important;
+  border-color: rgba(74, 222, 128, 0.2) !important;
+}
+
+.header-cv-link:hover {
+  color: #4ade80 !important;
+  background: rgba(74, 222, 128, 0.08) !important;
+  border-color: rgba(74, 222, 128, 0.4) !important;
+}
+
 .scroll-indicator {
   position: absolute;
   bottom: 80px;
@@ -145,6 +184,7 @@
   animation: chain-drift var(--deco-duration, 30s) ease-in-out infinite;
   --deco-rotation: 0deg;
   transition: opacity 0.4s ease, transform 0.3s ease;
+  will-change: transform;
 }
 
 .chain-logo-decoration:hover {
@@ -186,6 +226,7 @@
   flex-direction: column;
   align-items: center;
   position: relative;
+  padding-top: 60px;
 }
 
 .block-section {
@@ -394,6 +435,16 @@
 
   .block-section {
     padding: 12px 12px;
+  }
+
+  .header-links {
+    gap: 8px;
+    margin-top: 24px;
+  }
+
+  .header-links a {
+    font-size: 0.7rem;
+    padding: 5px 10px;
   }
 
   .scroll-indicator {
