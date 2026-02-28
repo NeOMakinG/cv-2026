@@ -169,7 +169,7 @@ export const BlockchainTimeline = () => {
             <a href="mailto:contact@0xm4king.com">
               <HiOutlineMail /> contact@0xm4king.com
             </a>
-            <a href="/cv" className="header-cv-link">
+            <a href="/cv.pdf" download className="header-cv-link">
               <HiOutlineDocumentDownload /> Download CV
             </a>
           </div>
@@ -220,7 +220,7 @@ export const BlockchainTimeline = () => {
             <a href="mailto:contact@0xm4king.com">
               <HiOutlineMail /> contact@0xm4king.com
             </a>
-            <a href="/cv" className="footer-cv-link">
+            <a href="/cv.pdf" download className="footer-cv-link">
               <HiOutlineDocumentDownload /> Download CV
             </a>
           </div>
