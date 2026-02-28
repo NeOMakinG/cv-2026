@@ -45,6 +45,7 @@ const RAW_RUNTIME_STATE =
           ["lenis", "virtual:094dee6319330536d20452c3ea1bfbb079ee23af603f4b91aeb721a74c1c24d21ed97873af116dc27da72b77ac249ff6bbaaac3cd63eba4ab48f382a6a2b6cfa#npm:1.3.17"],\
           ["react", "npm:19.2.4"],\
           ["react-dom", "virtual:094dee6319330536d20452c3ea1bfbb079ee23af603f4b91aeb721a74c1c24d21ed97873af116dc27da72b77ac249ff6bbaaac3cd63eba4ab48f382a6a2b6cfa#npm:19.2.4"],\
+          ["react-icons", "virtual:094dee6319330536d20452c3ea1bfbb079ee23af603f4b91aeb721a74c1c24d21ed97873af116dc27da72b77ac249ff6bbaaac3cd63eba4ab48f382a6a2b6cfa#npm:5.5.0"],\
           ["serve", "npm:14.2.5"],\
           ["three", "npm:0.183.2"],\
           ["typescript", "patch:typescript@npm%3A5.9.3#optional!builtin<compat/typescript>::version=5.9.3&hash=5786d5"],\
@@ -2275,6 +2276,7 @@ const RAW_RUNTIME_STATE =
           ["lenis", "virtual:094dee6319330536d20452c3ea1bfbb079ee23af603f4b91aeb721a74c1c24d21ed97873af116dc27da72b77ac249ff6bbaaac3cd63eba4ab48f382a6a2b6cfa#npm:1.3.17"],\
           ["react", "npm:19.2.4"],\
           ["react-dom", "virtual:094dee6319330536d20452c3ea1bfbb079ee23af603f4b91aeb721a74c1c24d21ed97873af116dc27da72b77ac249ff6bbaaac3cd63eba4ab48f382a6a2b6cfa#npm:19.2.4"],\
+          ["react-icons", "virtual:094dee6319330536d20452c3ea1bfbb079ee23af603f4b91aeb721a74c1c24d21ed97873af116dc27da72b77ac249ff6bbaaac3cd63eba4ab48f382a6a2b6cfa#npm:5.5.0"],\
           ["serve", "npm:14.2.5"],\
           ["three", "npm:0.183.2"],\
           ["typescript", "patch:typescript@npm%3A5.9.3#optional!builtin<compat/typescript>::version=5.9.3&hash=5786d5"],\
@@ -3967,6 +3969,28 @@ const RAW_RUNTIME_STATE =
           ["@types/react", "npm:19.2.14"],\
           ["react", "npm:19.2.4"],\
           ["scheduler", "npm:0.27.0"]\
+        ],\
+        "packagePeers": [\
+          "@types/react",\
+          "react"\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["react-icons", [\
+      ["npm:5.5.0", {\
+        "packageLocation": "./.yarn/cache/react-icons-npm-5.5.0-906730a3cf-a24309bfc9.zip/node_modules/react-icons/",\
+        "packageDependencies": [\
+          ["react-icons", "npm:5.5.0"]\
+        ],\
+        "linkType": "SOFT"\
+      }],\
+      ["virtual:094dee6319330536d20452c3ea1bfbb079ee23af603f4b91aeb721a74c1c24d21ed97873af116dc27da72b77ac249ff6bbaaac3cd63eba4ab48f382a6a2b6cfa#npm:5.5.0", {\
+        "packageLocation": "./.yarn/__virtual__/react-icons-virtual-7e103cb7b0/0/cache/react-icons-npm-5.5.0-906730a3cf-a24309bfc9.zip/node_modules/react-icons/",\
+        "packageDependencies": [\
+          ["react-icons", "virtual:094dee6319330536d20452c3ea1bfbb079ee23af603f4b91aeb721a74c1c24d21ed97873af116dc27da72b77ac249ff6bbaaac3cd63eba4ab48f382a6a2b6cfa#npm:5.5.0"],\
+          ["@types/react", "npm:19.2.14"],\
+          ["react", "npm:19.2.4"]\
         ],\
         "packagePeers": [\
           "@types/react",\

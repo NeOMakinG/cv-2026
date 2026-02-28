@@ -1,4 +1,6 @@
 import { useState, useRef, useEffect, useMemo } from 'react';
+import { FaGithub, FaXTwitter } from 'react-icons/fa6';
+import { HiOutlineMail, HiOutlineDocumentDownload } from 'react-icons/hi';
 import { BlockCard } from './BlockCard';
 import { ChainConnector } from './ChainConnector';
 import { ChainModal } from './ChainModal';
@@ -176,16 +178,16 @@ export const BlockchainTimeline = () => {
           </p>
           <div className="footer-links">
             <a href="https://github.com/neomaking" target="_blank" rel="noopener noreferrer">
-              GitHub
+              <FaGithub /> GitHub
             </a>
             <a href="https://x.com/0xm4king" target="_blank" rel="noopener noreferrer">
-              X
+              <FaXTwitter /> X
             </a>
             <a href="mailto:contact@0xm4king.com">
-              contact@0xm4king.com
+              <HiOutlineMail /> contact@0xm4king.com
             </a>
             <a href="/cv" className="footer-cv-link">
-              Download CV
+              <HiOutlineDocumentDownload /> Download CV
             </a>
           </div>
         </div>

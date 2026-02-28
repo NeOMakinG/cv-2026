@@ -326,6 +326,9 @@
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 6px;
   transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
 }
 
 .footer-links a:hover {
