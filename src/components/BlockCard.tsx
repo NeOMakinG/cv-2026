@@ -91,14 +91,14 @@ export const BlockCard = ({ block, displayIndex }: BlockCardProps) => {
       className={`block-card ${!block.confirmed ? 'mining' : ''}`}
     >
       <img
-        src="/block-1.svg"
+        src="/block-1.png"
         className="block-bg-svg block-bg-svg-1"
         style={{ '--base-rotation': `${r1}deg` } as React.CSSProperties}
         alt=""
         aria-hidden="true"
       />
       <img
-        src="/block-2.svg"
+        src="/block-2.png"
         className="block-bg-svg block-bg-svg-2"
         style={{ '--base-rotation': `${r2}deg` } as React.CSSProperties}
         alt=""
