@@ -119,7 +119,8 @@
   margin-top: 32px;
 }
 
-.header-links a {
+.header-links a,
+.header-links button {
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.8rem;
   color: rgba(255, 255, 255, 0.4);
@@ -131,9 +132,12 @@
   display: inline-flex;
   align-items: center;
   gap: 6px;
+  background: none;
+  cursor: pointer;
 }
 
-.header-links a:hover {
+.header-links a:hover,
+.header-links button:hover {
   color: #fff;
   background: rgba(255, 255, 255, 0.05);
   border-color: rgba(255, 255, 255, 0.2);
@@ -361,7 +365,8 @@
   flex-wrap: wrap;
 }
 
-.footer-links a {
+.footer-links a,
+.footer-links button {
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.9rem;
   color: rgba(255, 255, 255, 0.5);
@@ -369,13 +374,16 @@
   padding: 8px 16px;
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 6px;
-  transition: all 0.2s ease;
+  transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
   display: inline-flex;
   align-items: center;
   gap: 6px;
+  background: none;
+  cursor: pointer;
 }
 
-.footer-links a:hover {
+.footer-links a:hover,
+.footer-links button:hover {
   color: #fff;
   background: rgba(255, 255, 255, 0.05);
   border-color: rgba(255, 255, 255, 0.25);
@@ -417,7 +425,8 @@
     gap: 12px;
   }
 
-  .footer-links a {
+  .footer-links a,
+  .footer-links button {
     font-size: 0.8rem;
     padding: 6px 12px;
   }
@@ -445,7 +454,8 @@
     margin-top: 24px;
   }
 
-  .header-links a {
+  .header-links a,
+  .header-links button {
     font-size: 0.7rem;
     padding: 5px 10px;
   }

@@ -25,7 +25,7 @@
 .cv-back {
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.8rem;
-  color: rgba(255, 255, 255, 0.35);
+  color: rgba(255, 255, 255, 0.6);
   text-decoration: none;
   transition: color 0.2s;
 }
@@ -69,7 +69,7 @@
   justify-content: space-between;
   align-items: flex-start;
   padding-bottom: 16px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
   margin-bottom: 20px;
 }
 
@@ -84,7 +84,7 @@
 .cv-title {
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.8rem;
-  color: rgba(255, 255, 255, 0.35);
+  color: rgba(255, 255, 255, 0.6);
   margin: 4px 0 0 0;
   letter-spacing: 0.02em;
 }
@@ -96,7 +96,7 @@
   gap: 3px;
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.7rem;
-  color: rgba(255, 255, 255, 0.3);
+  color: rgba(255, 255, 255, 0.6);
 }
 
 /* ---- Two-column body ---- */
@@ -111,7 +111,7 @@
   display: flex;
   flex-direction: column;
   gap: 18px;
-  border-right: 1px solid rgba(255, 255, 255, 0.04);
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
   padding-right: 24px;
 }
 
@@ -125,10 +125,10 @@
   font-weight: 600;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: rgba(74, 222, 128, 0.55);
+  color: rgba(74, 222, 128, 0.85);
   margin: 0 0 10px 0;
   padding-bottom: 5px;
-  border-bottom: 1px solid rgba(74, 222, 128, 0.12);
+  border-bottom: 1px solid rgba(74, 222, 128, 0.25);
 }
 
 /* Skills */
@@ -140,14 +140,14 @@
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.6rem;
   font-weight: 600;
-  color: rgba(255, 255, 255, 0.45);
+  color: rgba(255, 255, 255, 0.7);
   letter-spacing: 0.05em;
   margin: 0 0 1px 0;
 }
 
 .cv-skill-list {
   font-size: 0.7rem;
-  color: rgba(255, 255, 255, 0.55);
+  color: rgba(255, 255, 255, 0.8);
   margin: 0;
   line-height: 1.4;
 }
@@ -160,20 +160,20 @@
 .cv-edu-degree {
   font-size: 0.75rem;
   font-weight: 600;
-  color: rgba(255, 255, 255, 0.75);
+  color: rgba(255, 255, 255, 0.9);
   margin: 0;
 }
 
 .cv-edu-school {
   font-size: 0.7rem;
-  color: rgba(255, 255, 255, 0.45);
+  color: rgba(255, 255, 255, 0.7);
   margin: 1px 0 0 0;
 }
 
 .cv-edu-date {
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.6rem;
-  color: rgba(255, 255, 255, 0.25);
+  color: rgba(255, 255, 255, 0.5);
   margin: 1px 0 0 0;
 }
 
@@ -192,27 +192,27 @@
 .cv-project-name {
   font-size: 0.75rem;
   font-weight: 600;
-  color: rgba(255, 255, 255, 0.65);
+  color: rgba(255, 255, 255, 0.85);
 }
 
 .cv-project-role {
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.55rem;
-  color: rgba(255, 255, 255, 0.3);
+  color: rgba(255, 255, 255, 0.55);
   white-space: nowrap;
 }
 
 .cv-project-date {
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.55rem;
-  color: rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.45);
   margin: 0;
 }
 
 /* Languages */
 .cv-lang {
   font-size: 0.7rem;
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(255, 255, 255, 0.75);
   margin: 0 0 2px 0;
 }
 
@@ -225,7 +225,7 @@
 .cv-exp-item {
   padding-bottom: 14px;
   margin-bottom: 14px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .cv-exp-item:last-child {
@@ -235,7 +235,7 @@
 }
 
 .cv-exp-current {
-  border-left: 2px solid rgba(96, 165, 250, 0.35);
+  border-left: 2px solid rgba(96, 165, 250, 0.6);
   padding-left: 12px;
 }
 
@@ -249,20 +249,20 @@
 .cv-exp-title {
   font-size: 0.9rem;
   font-weight: 700;
-  color: rgba(255, 255, 255, 0.9);
+  color: #fff;
   margin: 0;
 }
 
 .cv-exp-company {
   font-size: 0.75rem;
-  color: rgba(255, 255, 255, 0.45);
+  color: rgba(255, 255, 255, 0.7);
   margin: 1px 0 0 0;
 }
 
 .cv-exp-date {
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.6rem;
-  color: rgba(255, 255, 255, 0.25);
+  color: rgba(255, 255, 255, 0.5);
   white-space: nowrap;
   flex-shrink: 0;
   margin-left: 12px;
@@ -271,7 +271,7 @@
 
 .cv-exp-desc {
   font-size: 0.75rem;
-  color: rgba(255, 255, 255, 0.45);
+  color: rgba(255, 255, 255, 0.75);
   line-height: 1.5;
   margin: 0 0 6px 0;
 }
@@ -286,24 +286,24 @@
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.55rem;
   padding: 1px 6px;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 3px;
-  color: rgba(255, 255, 255, 0.4);
+  color: rgba(255, 255, 255, 0.65);
 }
 
 /* ---- Footer ---- */
 .cv-footer {
   margin-top: 16px;
   padding-top: 10px;
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
   text-align: center;
 }
 
 .cv-hash {
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.6rem;
-  color: rgba(255, 255, 255, 0.18);
+  color: rgba(255, 255, 255, 0.4);
 }
 
 /* ============================================
@@ -443,7 +443,7 @@
   .cv-sidebar {
     border-right: none;
     padding-right: 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     padding-bottom: 20px;
     order: 2;
   }

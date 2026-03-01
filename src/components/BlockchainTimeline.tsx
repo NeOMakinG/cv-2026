@@ -4,6 +4,7 @@ import { HiOutlineMail, HiOutlineDocumentDownload } from 'react-icons/hi';
 import { BlockCard } from './BlockCard';
 import { ChainConnector } from './ChainConnector';
 import { ChainModal } from './ChainModal';
+import { CvPreviewModal } from './CvPreviewModal';
 import { BLOCKS, CAREER_CHAIN } from '../data/chain';
 import { CHAIN_DECORATIONS, getChainById } from '../data/chains';
 import type { ChainExperience } from '../data/chains';
@@ -12,6 +13,7 @@ import './BlockchainTimeline.css';
 export const BlockchainTimeline = () => {
   const reversedBlocks = useMemo(() => [...BLOCKS].reverse(), []);
   const [selectedChain, setSelectedChain] = useState<ChainExperience | null>(null);
+  const [showCvPreview, setShowCvPreview] = useState(false);
   const sectionRefs = useRef<HTMLElement[]>([]);
   const paginationRef = useRef<HTMLElement>(null);
   const headerRef = useRef<HTMLElement>(null);
@@ -169,9 +171,9 @@ export const BlockchainTimeline = () => {
             <a href="mailto:contact@0xm4king.com">
               <HiOutlineMail /> contact@0xm4king.com
             </a>
-            <a href="/cv.pdf" download className="header-cv-link">
+            <button onClick={() => setShowCvPreview(true)} className="header-cv-link">
               <HiOutlineDocumentDownload /> Download CV
-            </a>
+            </button>
           </div>
         </div>
         <div className="scroll-indicator">
@@ -220,14 +222,15 @@ export const BlockchainTimeline = () => {
             <a href="mailto:contact@0xm4king.com">
               <HiOutlineMail /> contact@0xm4king.com
             </a>
-            <a href="/cv.pdf" download className="footer-cv-link">
+            <button onClick={() => setShowCvPreview(true)} className="footer-cv-link">
               <HiOutlineDocumentDownload /> Download CV
-            </a>
+            </button>
           </div>
         </div>
       </footer>
 
       <ChainModal chain={selectedChain} onClose={() => setSelectedChain(null)} />
+      <CvPreviewModal open={showCvPreview} onClose={() => setShowCvPreview(false)} />
     </div>
   );
 };
