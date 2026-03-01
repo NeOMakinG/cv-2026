@@ -56,7 +56,7 @@
 .cv-sheet {
   width: 100%;
   max-width: 900px;
-  background: #0a0a0a;
+  background: #000;
   border: 1px solid rgba(255, 255, 255, 0.06);
   border-radius: 8px;
   padding: 36px 40px;
@@ -312,7 +312,7 @@
 @media print {
   @page {
     size: A4;
-    margin: 10mm 14mm;
+    margin: 0;
   }
 
   *,
@@ -323,15 +323,16 @@
   }
 
   html, body {
-    background: #0a0a0a !important;
+    background: #000 !important;
     margin: 0;
     padding: 0;
+    height: 100%;
   }
 
   .cv-page {
     padding: 0;
-    min-height: auto;
-    background: #0a0a0a !important;
+    min-height: 100%;
+    background: #000 !important;
   }
 
   .cv-actions {
@@ -342,9 +343,9 @@
     border: none;
     border-radius: 0;
     box-shadow: none;
-    padding: 0;
+    padding: 10mm 14mm;
     max-width: none;
-    background: #0a0a0a !important;
+    background: #000 !important;
   }
 
   .cv-header {
